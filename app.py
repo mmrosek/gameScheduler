@@ -15,7 +15,7 @@ class scheduler:
         self.max_gm_gap=1 # max gap b/w number of games played by any two players
         self.max_gm_plays=max_gm_plays # max number of times a player can play any game
         self.max_gm_plays_soft = max_gm_plays_soft
-        self.game_list=[('Bocci',1),('Beer_Pong',2), ('Kornhole',2), ('Flip_Cup',3),('Can_Jam',2)]
+        self.game_list=[('Bocci',1),('Ping_Pong',2), ('Kornhole',2), ('Can_Jam',2)]
     
     def check_model_feasibility(self):
         print('Checking feasibility')
