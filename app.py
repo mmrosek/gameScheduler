@@ -6,7 +6,8 @@ import streamlit as st
 import math
 
 class scheduler:
-    def __init__(self, plyr_list, n_rounds=3, max_gm_plays=2, max_gm_plays_soft=False, trim_gms_for_feasibility=True):
+    def __init__(self, plyr_list, n_rounds=3, max_gm_plays=2, max_gm_plays_soft=False, 
+                    trim_gms_for_feasibility=True, debug=False):
         self.plyr_list = plyr_list
         self.n_plyrs = len(plyr_list)
         self.trim_gms=trim_gms_for_feasibility
@@ -16,7 +17,7 @@ class scheduler:
         self.max_gm_plays=max_gm_plays # max number of times a player can play any game
         self.max_gm_plays_soft = max_gm_plays_soft
         self.game_list=[('Bocci',1),('Ping_Pong',2), ('Kornhole',2), ('Can_Jam',2)]
-    
+        self.debug=debug
     def check_model_feasibility(self):
         print('Checking feasibility')
         self.model.iisfirst(1)
@@ -61,7 +62,7 @@ class scheduler:
         req_plyrs_per_round = sum([ct*2 for ct in self.n_plyrs_per_game])
         
         if self.trim_gms & (req_plyrs_per_round > self.n_plyrs):
-            st.text("Removing games to fit the number of passed players")
+            if self.debug: st.text("Removing games to fit the number of passed players")
             while req_plyrs_per_round > self.n_plyrs:
                 self.game_list = self.game_list[:-1]
                 self.n_plyrs_per_game = [self.game_list[i][1] for i in range(len(self.game_list))]
