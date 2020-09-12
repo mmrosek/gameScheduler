@@ -243,7 +243,7 @@ if __name__ == '__main__':
         
     # Getting player list from user
     st.text('Copy the names below as an example or enter your own names')
-    st.text('Mikey, Janet, Miyerr, Jacqueline, Brokk, Jalen') 
+    st.text('MJ, Janet, Miles, Jenny, Brian, Lauren') 
     plyr_list = st.text_area("Enter player names separated by commas\n")
     plyr_list = plyr_list.split()
     plyr_list = [plyr.replace(',','') for plyr in plyr_list]
